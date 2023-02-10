@@ -1,7 +1,13 @@
-import {memo} from 'react';
+import {memo, useState} from 'react';
 
-function ProductsTable({filterData,list}) {
-    console.log(list)
+function ProductsTable({list}) {
+    const [sortTitle , setSortTitle] = useState('')
+    const [isLarge , setIsLarge] = useState(false)
+
+    const toggleSort = (title) => {
+        setSortTitle(title)
+        setIsLarge(!isLarge)
+    }
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -12,7 +18,7 @@ function ProductsTable({filterData,list}) {
                     </th>
                     <th scope="col" className="px-6 py-3 flex items-center">
                         price
-                        <span className={'cursor-pointer'}>
+                        <span onClick={() => toggleSort('price')} className={'cursor-pointer'}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true"
                                  fill="currentColor" viewBox="0 0 320 512">
                                 <path
@@ -36,7 +42,7 @@ function ProductsTable({filterData,list}) {
                 {
                     list &&
                     list
-                        // .filter(({title}) => title?.toLowerCase().includes(filterData?.toLowerCase()))
+                        .sort((a, b) => ((isLarge ? a[sortTitle] < b[sortTitle] : a[sortTitle] > b[sortTitle]) ? 1 : -1))
                         .map(({id,title,price,category,rating,image}) =>
                             <tr key={id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
