@@ -12,8 +12,8 @@ function FilterPosts({setFilterData}) {
     return (
         <>
             <input
-                className={'bg-white p-4 rounded-sm border border-gray-400 text-lg m-6 w-[320px]'}
-                type="text" placeholder={'please search title of post'} value={filter} onChange={filterHandler} />
+                className={'mx-auto bg-white p-4 rounded-sm border border-gray-400 text-lg m-6 w-[320px]'}
+                type="text" placeholder={'search ...'} value={filter} onChange={filterHandler} />
         </>
     );
 }

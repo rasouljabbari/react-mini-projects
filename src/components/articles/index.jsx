@@ -1,16 +1,16 @@
 import React, {useState, memo} from 'react';
-import usePosts from "./usePosts";
 import ArticleCard from "./ArticleCard";
-import FilterPosts from "./FilterPosts";
+import FilterPosts from "../../utils/FilterPosts";
+import {useFetch} from "../../utils/custom-hooks/useFetch";
 
 function Articles() {
-    const [posts] = usePosts()
+    const posts = useFetch('https://jsonplaceholder.typicode.com/posts' , 'get')
     const [filterData, setFilterData] = useState('')
 
     return (
         <>
             <FilterPosts setFilterData={setFilterData}/>
-            <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'}>
+            <div className={'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'}>
                 {
                     posts &&
                     posts
