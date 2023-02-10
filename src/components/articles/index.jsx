@@ -4,7 +4,7 @@ import FilterPosts from "../../utils/FilterPosts";
 import {useFetch} from "../../utils/custom-hooks/useFetch";
 
 function Articles() {
-    const posts = useFetch('https://jsonplaceholder.typicode.com/posts' , 'get')
+    const posts = useFetch('https://jsonplaceholder.typicode.com/posts?_limit=20' , 'get')
     const [filterData, setFilterData] = useState('')
 
     return (
