@@ -7,7 +7,7 @@ export const useFetch = (path, method) => {
     fetch(path, { method: method.toUpperCase() })
       .then((response) => response.json())
       .then((json) => setData(json));
-  }, []);
+  }, [path, method]);
 
   return data;
 };
