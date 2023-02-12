@@ -48,6 +48,9 @@ export default function Header() {
                             <li className="border-b border-gray-400 my-8 uppercase">
                                 <Link to="/products">Products</Link>
                             </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                                <Link to="/todo">Todo</Link>
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -61,6 +64,9 @@ export default function Header() {
                     </li>
                     <li>
                         <Link to="/products">Products</Link>
+                    </li>
+                    <li>
+                        <Link to="/todo">Todo</Link>
                     </li>
                 </ul>
             </nav>
