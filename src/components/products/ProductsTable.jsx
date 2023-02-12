@@ -10,7 +10,7 @@ function ProductsTable({list}) {
     }
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <table data-testid={'productsTable'} className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" className="px-6 py-3">
@@ -18,7 +18,7 @@ function ProductsTable({list}) {
                     </th>
                     <th scope="col" className="px-6 py-3 flex items-center">
                         price
-                        <span onClick={() => toggleSort('price')} className={'cursor-pointer'}>
+                        <span data-testid={'sortPrice'} onClick={() => toggleSort('price')} className={'cursor-pointer'}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-3 h-3 ml-1" aria-hidden="true"
                                  fill="currentColor" viewBox="0 0 320 512">
                                 <path
@@ -44,20 +44,20 @@ function ProductsTable({list}) {
                     list
                         .sort((a, b) => ((isLarge ? a[sortTitle] < b[sortTitle] : a[sortTitle] > b[sortTitle]) ? 1 : -1))
                         .map(({id,title,price,category,rating,image}) =>
-                            <tr key={id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <tr data-testid={'productRow'} key={id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th data-testid='title' scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {title}
                                 </th>
-                                <td className="px-6 py-4">
+                                <td data-testid='price' className="px-6 py-4">
                                     {price}
                                 </td>
-                                <td className="px-6 py-4">
+                                <td data-testid='category' className="px-6 py-4">
                                     {category}
                                 </td>
-                                <td className="px-6 py-4">
+                                <td data-testid='rating' className="px-6 py-4">
                                     {rating?.rate.toString()} / 5
                                 </td>
-                                <td className="px-6 py-4 text-right">
+                                <td data-testid='image' className="px-6 py-4 text-right">
                                     <img src={image} width={100} height={100} alt={title}/>
                                 </td>
                             </tr>
