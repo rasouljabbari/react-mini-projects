@@ -12,7 +12,7 @@ export default function Header() {
             <nav>
                 <section className="MOBILE-MENU flex lg:hidden">
                     <div
-                        data-testId={'hamburger-icon'}
+                        data-testid={'hamburger-icon'}
                         className="HAMBURGER-ICON space-y-2"
                         onClick={() => setIsNavOpen((prev) => !prev)}
                     >
@@ -21,9 +21,9 @@ export default function Header() {
                         <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
                     </div>
 
-                    <div data-testId={'mobile-menu'} className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+                    <div data-testid={'mobile-menu'} className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
                         <div
-                            data-testId={'close-icon'}
+                            data-testid={'close-icon'}
                             className="absolute top-0 right-0 px-8 py-8"
                             onClick={() => setIsNavOpen(false)}
                         >
