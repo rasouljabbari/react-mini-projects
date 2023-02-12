@@ -12,6 +12,7 @@ export default function Header() {
             <nav>
                 <section className="MOBILE-MENU flex lg:hidden">
                     <div
+                        data-testId={'hamburger-icon'}
                         className="HAMBURGER-ICON space-y-2"
                         onClick={() => setIsNavOpen((prev) => !prev)}
                     >
@@ -20,8 +21,9 @@ export default function Header() {
                         <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
                     </div>
 
-                    <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
+                    <div data-testId={'mobile-menu'} className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
                         <div
+                            data-testId={'close-icon'}
                             className="absolute top-0 right-0 px-8 py-8"
                             onClick={() => setIsNavOpen(false)}
                         >
@@ -70,7 +72,8 @@ export default function Header() {
                     </li>
                 </ul>
             </nav>
-            <style>{`
+            <style>
+                {`
       .hideMenuNav {
         display: none;
       }
@@ -88,7 +91,8 @@ export default function Header() {
         justify-content: space-evenly;
         align-items: center;
       }
-    `}</style>
+    `}
+            </style>
         </div>
     );
 }
