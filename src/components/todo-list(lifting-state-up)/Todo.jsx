@@ -3,7 +3,7 @@ import TodoCount from "./TodoCount";
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 
-function Todo(props) {
+function Todo() {
     const [todos, setTodos] = useState(["item 1", "item 2", "item 3"]);
 
     return (
