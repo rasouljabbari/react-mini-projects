@@ -1,4 +1,5 @@
 import {memo} from 'react';
+import TableSkeleton from "../../utils/loader/TableSkeleton";
 
 function UsersTable({filterData,users}) {
     return (
@@ -26,7 +27,7 @@ function UsersTable({filterData,users}) {
                 <tbody>
 
                     {
-                        users &&
+                        users ?
                         users
                             .filter(({name}) => name.toLowerCase().includes(filterData.toLowerCase()))
                             .map(({id,name,username,email,phone,website}) =>
@@ -47,7 +48,8 @@ function UsersTable({filterData,users}) {
                                     <a href={`https://www.${website}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{website}</a>
                                 </td>
                             </tr>
-                        )
+                        ) :
+                            <TableSkeleton trCount={4} counter={5}/>
                     }
                 </tbody>
             </table>

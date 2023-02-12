@@ -1,13 +1,16 @@
 import {memo, useState} from 'react';
+import TableSkeleton from "../../utils/loader/TableSkeleton";
 
 function ProductsTable({list}) {
     const [sortTitle , setSortTitle] = useState('')
     const [isLarge , setIsLarge] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const toggleSort = (title) => {
         setSortTitle(title)
         setIsLarge(!isLarge)
     }
+
     return (
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-8">
             <table data-testid={'productsTable'} className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -40,7 +43,7 @@ function ProductsTable({list}) {
                 <tbody>
 
                 {
-                    list &&
+                    list ?
                     list
                         .sort((a, b) => ((isLarge ? a[sortTitle] < b[sortTitle] : a[sortTitle] > b[sortTitle]) ? 1 : -1))
                         .map(({id,title,price,category,rating,image}) =>
@@ -58,10 +61,16 @@ function ProductsTable({list}) {
                                     {rating?.rate.toString()} / 5
                                 </td>
                                 <td data-testid='image' className="px-6 py-4 text-right">
-                                    <img src={image} width={100} height={100} alt={title}/>
+                                    <img
+                                        onLoad={() => {
+                                            setIsLoaded(true);
+                                        }}
+                                        className={isLoaded ? null : 'animate-pulse bg-teal-100 h-10 rounded-md w-full mb-3'}
+                                        loading={'lazy'} src={image} width={100} height={100} alt={title}/>
                                 </td>
                             </tr>
-                        )
+                        ) :
+                        <TableSkeleton trCount={4} counter={5}/>
                 }
                 </tbody>
             </table>
