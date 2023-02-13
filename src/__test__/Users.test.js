@@ -1,6 +1,7 @@
-import {screen, render} from '@testing-library/react'
+import {renderHook, screen, render, act, waitFor} from '@testing-library/react'
 import Users from "../components/users";
 import UsersTable from "../components/users/UsersTable";
+import {useFetch} from "../utils/custom-hooks/useFetch";
 
 const users = [
     {
@@ -20,6 +21,17 @@ const users = [
         website: 'anastasia.net',
     },
 ];
+
+global.fetch = jest.fn();
+
+describe('useFetch', () => {
+    it('fetches data from the API', async () => {
+        const { result } = renderHook(() => useFetch('https://jsonplaceholder.typicode.com/users', 'get'));
+        console.log(result.current)
+        expect(result.current).toEqual(null);
+        await waitFor(() => expect(result.current).not.toEqual(null))
+    });
+});
 
 describe('Users', function () {
 

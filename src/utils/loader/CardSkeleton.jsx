@@ -9,15 +9,15 @@ function CardSkeleton({counter}) {
         <>
             {
                 counter > 0 &&
-                filledArray.map(item =>
-                    <div key={item} className={'bg-gray-200 rounded-md border-2 border-gray-500 p-8'}>
-                        <h1 className={'text-xl font-medium mb-6'}>
+                filledArray.map((item, index) =>
+                    <div key={`cardSkeleton${index}`} className={'bg-gray-200 rounded-md border-2 border-gray-500 p-8'}>
+                        <div className={'text-xl font-medium mb-6'}>
                             <Skeleton type={'title'} count={3}/>
-                        </h1>
+                        </div>
 
-                        <p className={'text-md font-normal'}>
+                        <div className={'text-md font-normal'}>
                             <Skeleton type={'text'} count={5}/>
-                        </p>
+                        </div>
                     </div>
                 )
             }

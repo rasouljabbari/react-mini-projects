@@ -75,6 +75,7 @@ function ProductsTable({list, removeHandler}) {
                         </td>
                         <td>
                             <svg
+                                data-testid={'remove'}
                                 onClick={() => removeHandler(id)}
                                 className="mx-auto cursor-pointer w-6 h-6 dark:text-white hover:text-rose-600"
                                 fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"

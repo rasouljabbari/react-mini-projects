@@ -7,8 +7,8 @@ function Skeleton({type,count = 1}) {
         <div role="status" className="animate-pulse">
             {
                 count > 0 &&
-                filledArray.map(item =>
-                    <div key={item} className={`${type === 'title' ? 'bg-emerald-100' : 'bg-teal-100'} h-4 rounded-md w-full mb-3`}></div>
+                filledArray.map((item, index) =>
+                    <div key={`mainSkeleton${index}`} className={`${type === 'title' ? 'bg-emerald-100' : 'bg-teal-100'} h-4 rounded-md w-full mb-3`}></div>
                 )
             }
         </div>
