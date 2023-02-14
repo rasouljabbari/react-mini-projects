@@ -10,7 +10,7 @@ function CardSkeleton({counter}) {
             {
                 counter > 0 &&
                 filledArray.map((item, index) =>
-                    <div key={`cardSkeleton${index}`} className={'bg-gray-200 rounded-md border-2 border-gray-500 p-8'}>
+                    <div data-testid={'card-skeleton'} key={`cardSkeleton${index}`} className={'bg-gray-200 rounded-md border-2 border-gray-500 p-8'}>
                         <div className={'text-xl font-medium mb-6'}>
                             <Skeleton type={'title'} count={3}/>
                         </div>

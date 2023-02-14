@@ -10,7 +10,7 @@ function TableSkeleton({trCount = 1,counter = 5}) {
             {
                 trCount > 0 &&
                 filledArray.map((item, index) =>(
-                    <tr key={`tr${index}`} className="w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr data-testid={'skeleton-loader'} key={`tr${index}`} className="w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         {
                             counter > 0 &&
                             tdArray.map((info, count) =>(

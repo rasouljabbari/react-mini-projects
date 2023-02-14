@@ -4,22 +4,22 @@ import UsersTable from "./UsersTable";
 import FilterPosts from "../../utils/FilterPosts";
 
 function Users() {
-    const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/users')
-    const [filterData , setFilterData] = useState('')
-    console.log(data)
+    const {data, loading, error} = useFetch('https://jsonplaceholder.typicode.com/users')
+    const [filterData, setFilterData] = useState('')
+
     if (loading) {
-        return <div>Loading...</div>;
+        return <div data-testid={'loading-spinner'}>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div data-testid={'error-message'}>Error: {error.message}</div>;
     }
 
     return (
-        <>
+        <div data-testid={'users-list'}>
             <FilterPosts setFilterData={setFilterData}/>
             <UsersTable filterData={filterData} users={data}/>
-        </>
+        </div>
     );
 }
 

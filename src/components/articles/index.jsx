@@ -8,18 +8,18 @@ function Articles() {
     const [filterData, setFilterData] = useState('')
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div data-testid={'loading-spinner'}>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div data-testid={'error-message'}>Error: {error.message}</div>;
     }
 
     return (
-        <>
+        <div data-testid={'article-list'}>
             <FilterPosts setFilterData={setFilterData}/>
             <Posts posts={data} filterData={filterData}/>
-        </>
+        </div>
     );
 }
 

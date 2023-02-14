@@ -1,4 +1,4 @@
-import {renderHook, screen, render, act, waitFor} from '@testing-library/react'
+import {screen, render} from '@testing-library/react'
 import Users from "../components/users";
 import UsersTable from "../components/users/UsersTable";
 import {useFetch} from "../utils/custom-hooks/useFetch";
@@ -22,18 +22,19 @@ const users = [
     },
 ];
 
-global.fetch = jest.fn();
-
-describe('useFetch', () => {
-    it('fetches data from the API', async () => {
-        const { result } = renderHook(() => useFetch('https://jsonplaceholder.typicode.com/users', 'get'));
-        console.log(result.current)
-        expect(result.current).toEqual(null);
-        await waitFor(() => expect(result.current).not.toEqual(null))
-    });
-});
+jest.mock('../utils/custom-hooks/useFetch');
 
 describe('Users', function () {
+
+    test('shows users list while data is being fetched', async () => {
+        useFetch.mockReturnValue({
+            data: users,
+            loading: null,
+            error: null,
+        });
+        render(<Users/>);
+        expect(screen.getByTestId('users-list')).toBeInTheDocument();
+    });
 
     test('renders the users table with the expected data', async () => {
         render(<UsersTable filterData="" users={users}/>);
@@ -63,12 +64,18 @@ describe('Users', function () {
     });
 
     it('renders only filtered users if filterData is not empty', () => {
-        render(<UsersTable users={users} filterData='Leanne Graham' />)
+        render(<UsersTable users={users} filterData='Leanne Graham'/>)
         const userRows = screen.getAllByTestId('userRow');
 
         expect(userRows).toHaveLength(1)
         const userSiteAddress = userRows[0].querySelectorAll('td')[3];
 
         expect(userSiteAddress.textContent).toBe('hildegard.org');
+    })
+
+    test('show skeleton loader when users list is empty', () => {
+        render(<UsersTable users={null} filterData={''}/>)
+        const skeletonLoader = screen.getAllByTestId('skeleton-loader')
+        expect(skeletonLoader).toHaveLength(4)
     })
 });

@@ -6,22 +6,22 @@ import {useRemove} from "../../utils/custom-hooks/useRemove";
 function Products() {
     const [products, setProducts] = useState([])
     const [items, removeObject] = useRemove()
-    const { data, loading, error } = useFetch('https://fakestoreapi.com/products')
+    const {data, loading, error} = useFetch('https://fakestoreapi.com/products')
 
     useEffect(() => {
         if (data?.length > 0) setProducts([...data])
     }, [data])
 
     useEffect(() => {
-        if(items?.length > 0 ) setProducts([...items])
+        if (items?.length > 0) setProducts([...items])
     }, [items])
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div data-testid={'loading-spinner'}>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        return <div data-testid={'error-message'}>Error: {error.message}</div>;
     }
 
     const removeHandler = (id) => {
@@ -29,7 +29,9 @@ function Products() {
     }
 
     return (
-        <ProductsTable removeHandler={removeHandler} list={products}/>
+        <div data-testid={'products-list'}>
+            <ProductsTable removeHandler={removeHandler} list={products}/>
+        </div>
     );
 }
 
