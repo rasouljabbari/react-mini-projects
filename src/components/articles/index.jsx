@@ -1,20 +1,24 @@
-import React, {useState, memo, useEffect} from 'react';
+import React, {useState, memo} from 'react';
 import FilterPosts from "../../utils/FilterPosts";
 import {useFetch} from "../../utils/custom-hooks/useFetch";
 import Posts from "./Posts";
 
 function Articles() {
-    const posts = useFetch('https://jsonplaceholder.typicode.com/posts?_limit=20' , 'get')
+    const { data, loading, error } = useFetch('https://jsonplaceholder.typicode.com/posts?_limit=20')
     const [filterData, setFilterData] = useState('')
-    const [list, setList] = useState([])
 
-    useEffect(() => {
-        setList(posts)
-    }, [posts])
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
     return (
         <>
             <FilterPosts setFilterData={setFilterData}/>
-            <Posts posts={list} filterData={filterData}/>
+            <Posts posts={data} filterData={filterData}/>
         </>
     );
 }
