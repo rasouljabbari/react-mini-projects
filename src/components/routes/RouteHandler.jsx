@@ -1,20 +1,22 @@
-import React from 'react';
+import React, {Suspense,lazy, memo } from 'react';
 import {Route, Routes} from "react-router-dom";
-import Articles from "../articles";
-import Users from "../users";
-import Products from "../products/Products";
-import Todo from "../todo-list(lifting-state-up)/Todo";
+const Articles = lazy(() => import("../articles"));
+const Users = lazy(() => import("../users"));
+const Products = lazy(() => import("../products/Products"));
+const Todo = lazy(() => import("../todo-list(lifting-state-up)/Todo"));
 
 function RouteHandler() {
     return (
-        <Routes>
-            <Route index element={<Articles/>}/>
-            <Route path={'articles'} element={<Articles/>}/>
-            <Route path={'users'} element={<Users/>}/>
-            <Route path={'products'} element={<Products/>}/>
-            <Route path={'todo'} element={<Todo/>}/>
-        </Routes>
+        <Suspense fallback={<h3>Loading...</h3>}>
+            <Routes>
+                <Route index element={<Articles/>}/>
+                <Route path={'articles'} element={<Articles/>}/>
+                <Route path={'users'} element={<Users/>}/>
+                <Route path={'products'} element={<Products/>}/>
+                <Route path={'todo'} element={<Todo/>}/>
+            </Routes>
+        </Suspense>
     );
 }
 
-export default RouteHandler;
+export default memo(RouteHandler);

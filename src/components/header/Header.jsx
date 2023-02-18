@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import {Link} from "react-router-dom";
 
-export default function Header() {
+function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
     return (
@@ -96,3 +96,4 @@ export default function Header() {
         </div>
     );
 }
+export default memo(Header)
