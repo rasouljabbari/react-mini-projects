@@ -53,6 +53,12 @@ function Header() {
                             <li className="border-b border-gray-400 my-8 uppercase">
                                 <Link to="/todo">Todo</Link>
                             </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                                <Link to="/mobx-todo">Mobx Todo</Link>
+                            </li>
+                            <li className="border-b border-gray-400 my-8 uppercase">
+                                <Link to="/mobx-animal">Mobx Animal</Link>
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -69,6 +75,12 @@ function Header() {
                     </li>
                     <li>
                         <Link to="/todo">Todo</Link>
+                    </li>
+                    <li>
+                        <Link to="/mobx-todo">Mobx Todo</Link>
+                    </li>
+                    <li>
+                        <Link to="/mobx-animal">Mobx Animal</Link>
                     </li>
                 </ul>
             </nav>
