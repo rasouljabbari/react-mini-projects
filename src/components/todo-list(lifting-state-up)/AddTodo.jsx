@@ -1,4 +1,5 @@
 import {memo, useRef} from 'react';
+import {inputClass} from "../../utils/stateList";
 
 function AddTodo({ setTodos }) {
     const inputRef = useRef()
@@ -14,7 +15,7 @@ function AddTodo({ setTodos }) {
             <input
                 data-testid={'todo-input'}
                 ref={inputRef}
-                className={'ml-0 mr-2 bg-white py-2 px-4 rounded-sm border border-gray-400 text-lg m-6 w-[320px]'}
+                className={inputClass}
                 type="text" id="todo" />
             <button type="submit">Add Todo</button>
         </form>

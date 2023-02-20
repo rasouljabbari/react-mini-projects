@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import {useEffect} from 'react'
 import Header from "./components/header/Header";
 import RouteHandler from "./components/routes/RouteHandler";
 import {useDispatch} from "react-redux";

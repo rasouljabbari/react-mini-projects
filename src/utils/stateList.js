@@ -1,0 +1,1 @@
+export const inputClass = 'h-11 bg-white border border-input-border text-gray-900 dark:border-slate-600 dark:bg-slate-800 dark:highlight-white/5 dark:hover:bg-slate-700 dark:text-amber-100 text-md rounded-md font-normal focus:ring-blue-500 focus:border-blue-500 block p-3 my-6 w-[320px] '

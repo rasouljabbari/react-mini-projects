@@ -1,4 +1,5 @@
 import {useState, memo, useCallback} from 'react';
+import {inputClass} from "./stateList";
 
 function FilterPosts({setFilterData}) {
     const [filter, setFilter] = useState('');
@@ -13,7 +14,7 @@ function FilterPosts({setFilterData}) {
         <>
             <input
                 data-testid={'FilterPosts'}
-                className={'mx-auto bg-white p-4 rounded-sm border border-gray-400 text-lg m-6 w-[320px]'}
+                className={inputClass}
                 type="text" placeholder={'search ...'} value={filter} onChange={filterHandler} />
         </>
     );

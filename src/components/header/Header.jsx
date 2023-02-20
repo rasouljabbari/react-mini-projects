@@ -1,15 +1,18 @@
 import { useState, memo } from "react";
 import {Link} from "react-router-dom";
+import SwitchTheme from "../buttons/SwitchTheme";
 
 function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
     return (
-        <div className="flex items-center justify-between border-b border-gray-400 py-8">
+        <div className="dark:bg-slate-800 dark:border-b-gray-700 flex items-center justify-between border-b border-gray-400 py-8 px-4">
             <a href="/">
                 <img src="https://designbygio.it/images/logo.png" alt="logo" />
             </a>
+            <SwitchTheme/>
             <nav>
+
                 <section className="MOBILE-MENU flex lg:hidden">
                     <div
                         data-testid={'hamburger-icon'}
@@ -42,22 +45,22 @@ function Header() {
                         </div>
                         <ul className="flex flex-col items-center justify-between min-h-[250px]">
                             <li className="border-b border-gray-400 my-8 uppercase">
-                                <Link to="/articles">Articles</Link>
+                                <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/articles">Articles</Link>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                                <Link to="/users">Users</Link>
+                                <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/users">Users</Link>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                                <Link to="/products">Products</Link>
+                                <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/products">Products</Link>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                                <Link to="/todo">Todo</Link>
+                                <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/todo">Todo</Link>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                                <Link to="/mobx-todo">Mobx Todo</Link>
+                                <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/mobx-todo">Mobx Todo</Link>
                             </li>
                             <li className="border-b border-gray-400 my-8 uppercase">
-                                <Link to="/mobx-animal">Mobx Animal</Link>
+                                <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/mobx-animal">Mobx Animal</Link>
                             </li>
                         </ul>
                     </div>
@@ -65,22 +68,22 @@ function Header() {
 
                 <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
                     <li>
-                        <Link to="/articles">Articles</Link>
+                        <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/articles">Articles</Link>
                     </li>
                     <li>
-                        <Link to="/users">Users</Link>
+                        <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/users">Users</Link>
                     </li>
                     <li>
-                        <Link to="/products">Products</Link>
+                        <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/products">Products</Link>
                     </li>
                     <li>
-                        <Link to="/todo">Todo</Link>
+                        <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/todo">Todo</Link>
                     </li>
                     <li>
-                        <Link to="/mobx-todo">Mobx Todo</Link>
+                        <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/mobx-todo">Mobx Todo</Link>
                     </li>
                     <li>
-                        <Link to="/mobx-animal">Mobx Animal</Link>
+                        <Link className=' dark:text-slate-400 font-normal dark:hover:text-slate-300' to="/mobx-animal">Mobx Animal</Link>
                     </li>
                 </ul>
             </nav>

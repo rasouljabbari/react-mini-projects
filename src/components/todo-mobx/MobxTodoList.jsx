@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {observer} from "mobx-react-lite";
+import {inputClass} from "../../utils/stateList";
 
 const MobxTodoList = observer(({animalStore,todoStore}) => {
 
@@ -8,30 +9,34 @@ const MobxTodoList = observer(({animalStore,todoStore}) => {
 
     return (
         <div>
-            <input
-                className={'border border-gray-600 rounded-md p-3 w-40 h-11'}
-                value={value}
-                onChange={({target}) => setValue(target.value)}
-                type="text"/>
-            <button
-                className={'bg-sky-500 text-white rounded-md h-11 p-2 ml-2'}
-                onClick={() => {
-                    if (value) {
-                        todoStore.addTodo(value)
-                        setValue('')
-                    }
-                }}
-            >Submit
-            </button>
+            <div className="flex items-center">
+                <input
+                    className={inputClass}
+                    value={value}
+                    onChange={({target}) => setValue(target.value)}
+                    type="text"/>
+                <button
+                    className={'bg-sky-500 text-white rounded-md h-11 p-2 ml-2'}
+                    onClick={() => {
+                        if (value) {
+                            todoStore.addTodo(value)
+                            setValue('')
+                        }
+                    }}
+                >Submit
+                </button>
+            </div>
             <br/>
             Completed : {status.completed}
             <br/>
             Remaining : {status.remaining}
-
+            <br/>
+            <br/>
             <ul>
                 {
                     todoStore.todos.map(todo => {
                         return <li
+                            className='cursor-pointer dark:text-amber-50'
                             key={todo.id}
                             onClick={() => todoStore.toggleTodo(todo.id)}
                         >[{todo.completed ? 'x' : ' '}] {todo.title}</li>
